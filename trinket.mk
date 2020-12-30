@@ -282,6 +282,9 @@ PRODUCT_PACKAGES += \
      android.hardware.power-service.xiaomi_trinket-libperfmgr \
      android.hardware.power.stats@1.0-service.xiaomi_trinket
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/power-libperfmgr/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+
 # VNDK
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full-vendorcompat \
