@@ -3085,8 +3085,8 @@ case "$target" in
             # Setting b.L scheduler parameters
             echo 85 > /proc/sys/kernel/sched_downmigrate
             echo 85 > /proc/sys/kernel/sched_upmigrate
-            echo 85 > /proc/sys/kernel/sched_group_downmigrate
-            echo 100 > /proc/sys/kernel/sched_group_upmigrate
+            echo 25 > /proc/sys/kernel/sched_downmigrate_boosted
+            echo 25 > /proc/sys/kernel/sched_upmigrate_boosted
 
             # cpuset settings
             echo 0-1 > /dev/cpuset/background/cpus
@@ -3102,7 +3102,6 @@ case "$target" in
 
             # configure governor settings for little cluster
             echo "schedutil" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-            echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/pl
             echo 500 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us
             echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us
             echo 1420800 > /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq
@@ -3110,7 +3109,6 @@ case "$target" in
 
             # configure governor settings for big cluster
             echo "schedutil" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
-            echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/pl
             echo 500 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/up_rate_limit_us
             echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/down_rate_limit_us
             echo 1401600 > /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq
